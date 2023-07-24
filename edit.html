@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit file</title>
+</head>
+<body>
+
+    <form action="update.php" method="post">
+        <?php foreach($stores as $store): ?>
+        <div>
+            <label>InputOne</label>
+            <input type="number" placeholder="enter number" name="inputOne" value="<?php echo $store->inputOne ?>">
+            <select name="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <label>InputTwo</label>
+            <input type="number" placeholder="enter number" name="inputTwo" value="<?php echo $store->inputTwo ?>">
+            <input hidden name="update" value="<?php echo $store->id ?>" name="update">
+            <button type="submit" class="del">Update</button>
+            <button><a href="fetch.php">Back</a></button>
+        </div>
+        <?php endforeach;?>
+    </form>
+
+
+</body>
+</html>

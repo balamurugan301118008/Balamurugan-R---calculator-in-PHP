@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator.php</title>
+</head>
+
+<body>
+    <h2>Calculator</h2>
+    <form action="insert.php" method="post">
+        <div>
+            <label>InputOne</label>
+            <input type="number" step="any" placeholder="enter number" name="inputOne">
+            <select name="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <label>InputTwo</label>
+            <input type="number"  step="any" placeholder="enter number" name="inputTwo">
+            <button>calculate</button>
+        </div>
+    </form>
+
+            <th>InputOne</th>
+            <th>Operator</th>
+            <th>InputTwo</th>
+            <th>Total</th>
+
+    <table cellspacing="30">
+        <?php foreach($stores as $store): ?>
+        <tr>
+            <td><?php echo $store->id ?></td>
+            <td class="one">
+                <?php echo $store->inputOne ?>
+            </td>
+            <td class="operator">
+                <?php echo $store->operator ?>
+            </td>
+            <td class="one">
+                <?php echo $store->inputTwo ?>
+            </td>
+            <td class="total">
+                <?php echo $store->result ?>
+            </td>
+            <td>
+                <form action="delete.php" method="post">
+                    <input hidden name="delete" value="<?php echo $store->id ?>" name="delete">
+                    <button type="submit" class="del">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form action="edit.php" method="post">
+                    <input hidden name="edit" value="<?php echo $store->id ?>" name="edit">
+                    <button type="submit" class="del">EDIT</button>
+                </form>
+            </td>
+        </tr>
+        <?php endforeach ;?>
+
+    </table>
+
+
+    <style>
+        body {
+            background-color: #ceeff3;
+        }
+        tr {
+            color: darkolivegreen;
+            padding: 0px 7px 0px 34px;
+        }
+        .one {
+            color: blueviolet;
+        }
+        table {
+            border: 1px solid grey;
+        }
+        .del {
+            color: rgb(223, 130, 130);
+        }
+        a{
+            padding-left: 58px;
+            color: red;
+            font-size: 20px;
+        }
+        .operator {
+            color: darkorange;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: 900;
+        }
+    </style>
+</body>
+
+</html>
